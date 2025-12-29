@@ -17,6 +17,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\API;
 
 use App\Http\Resources\UserResource;
+use App\Models\BonTransactions;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends BaseController
 {
@@ -24,8 +26,29 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
+        $history = DB::table('history')
+            ->where('user_id', '=', $user->id)
+            ->where('created_at', '>', $user->created_at)
+            ->selectRaw('SUM(actual_uploaded) as upload_sum')
+            ->selectRaw('SUM(uploaded) as credited_upload_sum')
+            ->selectRaw('SUM(actual_downloaded) as download_sum')
+            ->selectRaw('SUM(downloaded) as credited_download_sum')
+            ->selectRaw('SUM(seedtime) as seedtime_sum')
+            ->selectRaw('SUM(actual_downloaded > 0) as download_count')
+            ->selectRaw('COUNT(*) as count')
+            ->first();
+
+        $seedingSize = $user->seedingTorrents()->sum('size');
+
+        $bonusUploaded = BonTransactions::query()
+            ->where('sender_id', '=', $user->id)
+            ->where('name', 'like', '%Upload%')
+            ->sum('cost');
+
+        $uploadsCount = $user->torrents()->count();
+
         UserResource::withoutWrapping();
 
-        return new UserResource($user);
+        return new UserResource($user, $history, (int) $seedingSize, (int) $bonusUploaded, $uploadsCount);
     }
 }
