@@ -18,7 +18,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Resources\UserResource;
 use App\Models\BonTransactions;
-use Illuminate\Support\Facades\DB;
+use App\Models\History;
 
 class UserController extends BaseController
 {
@@ -26,7 +26,10 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
-        $history = DB::table('history')
+        $user->loadCount(['torrents', 'seedingTorrents', 'leechingTorrents']);
+
+        $user->history_stats = History::query()
+            ->withTrashed()
             ->where('user_id', '=', $user->id)
             ->where('created_at', '>', $user->created_at)
             ->selectRaw('SUM(actual_uploaded) as upload_sum')
@@ -38,17 +41,15 @@ class UserController extends BaseController
             ->selectRaw('COUNT(*) as count')
             ->first();
 
-        $seedingSize = $user->seedingTorrents()->sum('size');
+        $user->seeding_size = $user->seedingTorrents()->sum('size');
 
-        $bonusUploaded = BonTransactions::query()
+        $user->bonus_uploaded = BonTransactions::query()
             ->where('sender_id', '=', $user->id)
-            ->where('name', 'like', '%Upload%')
+            ->whereRelation('exchange', 'upload', '=', true)
             ->sum('cost');
-
-        $uploadsCount = $user->torrents()->count();
 
         UserResource::withoutWrapping();
 
-        return new UserResource($user, $history, (int) $seedingSize, (int) $bonusUploaded, $uploadsCount);
+        return new UserResource($user);
     }
 }

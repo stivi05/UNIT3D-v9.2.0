@@ -179,31 +179,31 @@ Response:
   "leeching": 0,
   "seedbonus": "0.00",
   "hit_and_runs": 0,
-  "real_uploaded": "45.2 GiB",
-  "real_downloaded": "1 GiB",
-  "credited_uploaded": "50 GiB",
-  "credited_downloaded": "1 GiB",
-  "average_seedtime": "15d4h32m",
-  "seeding_size": "2.5 TiB",
+  "real_uploaded": 48318382080,
+  "real_downloaded": 1073741824,
+  "credited_uploaded": 53687091200,
+  "credited_downloaded": 1073741824,
+  "average_seedtime": 1339392,
+  "seeding_size": 2748779069440,
   "fl_tokens": 5,
   "uploads_count": 12,
   "downloads_count": 87,
-  "bonus_uploaded": "4.8 GiB"
+  "bonus_uploaded": 5153960755
 }
 ```
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `real_uploaded` | string | Actual bytes uploaded (without bonus multipliers) |
-| `real_downloaded` | string | Actual bytes downloaded (without freeleech) |
-| `credited_uploaded` | string | Credited upload (with bonus multipliers applied) |
-| `credited_downloaded` | string | Credited download (after freeleech applied) |
-| `average_seedtime` | string | Average seed time per torrent |
-| `seeding_size` | string | Total size of torrents currently seeding |
+| `real_uploaded` | int | Actual bytes uploaded (without bonus multipliers) |
+| `real_downloaded` | int | Actual bytes downloaded (without freeleech) |
+| `credited_uploaded` | int | Credited bytes uploaded (with bonus multipliers applied) |
+| `credited_downloaded` | int | Credited bytes downloaded (after freeleech applied) |
+| `average_seedtime` | int | Average seed time per torrent in seconds |
+| `seeding_size` | int | Total size in bytes of torrents currently seeding |
 | `fl_tokens` | int | Available freeleech tokens |
 | `uploads_count` | int | Number of torrents uploaded |
 | `downloads_count` | int | Number of torrents downloaded |
-| `bonus_uploaded` | string | Upload credit purchased with bonus points |
+| `bonus_uploaded` | int | Upload credit in bytes purchased with bonus points |
 
 Example:
 ```
