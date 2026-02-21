@@ -118,17 +118,17 @@
         @else
             <h2 class="panel__heading">{{ __('common.action') }}</h2>
             <div class="panel__body">
-                <div x-data="dialog">
+                <div>
                     <p class="form__group form__group--horizontal">
                         <button
                             class="form__button form__button--filled form__button--centered"
-                            x-bind="showDialog"
+                            popovertarget="dialog-approve"
                         >
                             <i class="{{ config('other.font-awesome') }} fa-check"></i>
                             {{ __('request.approve') }}
                         </button>
                     </p>
-                    <dialog class="dialog" x-bind="dialogElement">
+                    <dialog id="dialog-approve" class="dialog" popover>
                         <h3 class="dialog__heading">
                             {{ __('request.approve') }}
                             {{ __('common.this') }}
@@ -165,9 +165,9 @@ Application approved!</textarea
                                     {{ __('request.approve') }}
                                 </button>
                                 <button
-                                    formmethod="dialog"
-                                    formnovalidate
                                     class="form__button form__button--outlined"
+                                    type="button"
+                                    popovertarget="dialog-approve"
                                 >
                                     {{ __('common.cancel') }}
                                 </button>
@@ -175,17 +175,17 @@ Application approved!</textarea
                         </form>
                     </dialog>
                 </div>
-                <div x-data="dialog">
+                <div>
                     <p class="form__group form__group--horizontal">
                         <button
                             class="form__button form__button--filled form__button--centered"
-                            x-bind="showDialog"
+                            popovertarget="dialog-reject"
                         >
                             <i class="{{ config('other.font-awesome') }} fa-times"></i>
                             {{ __('request.reject') }}
                         </button>
                     </p>
-                    <dialog class="dialog" x-bind="dialogElement">
+                    <dialog id="dialog-reject" class="dialog" popover>
                         <h3 class="dialog__heading">
                             {{ __('request.reject') }}
                             {{ __('common.this') }}
@@ -217,9 +217,9 @@ Insufficient proofs.</textarea
                                     {{ __('request.reject') }}
                                 </button>
                                 <button
-                                    formmethod="dialog"
-                                    formnovalidate
                                     class="form__button form__button--outlined"
+                                    type="button"
+                                    popovertarget="dialog-reject"
                                 >
                                     {{ __('common.cancel') }}
                                 </button>
