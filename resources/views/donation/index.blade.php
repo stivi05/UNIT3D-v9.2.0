@@ -115,7 +115,9 @@
 
         @foreach ($packages as $package)
             <dialog class="dialog" x-ref="dialog{{ $package->id }}">
-                <h4 class="dialog__heading">Donate $ {{ $package->cost }} USD</h4>
+                <h4 class="dialog__heading">
+                    Donate {{ $package->cost }} {{ config('donation.currency') }}
+                </h4>
                 <form
                     class="dialog__form"
                     method="POST"
@@ -132,8 +134,9 @@
                                 <input
                                     class="form__text"
                                     type="text"
-                                    disabled
+                                    readonly
                                     value="{{ $gateway->address }}"
+                                    x-on:focus="$el.select()"
                                     id="{{ 'gateway-' . $gateway->id }}"
                                 />
                                 <label
@@ -148,10 +151,10 @@
                         <p class="text-info">
                             Send
                             <strong>
-                                $ {{ $package->cost }} {{ config('donation.currency') }}
+                                {{ $package->cost }} {{ config('donation.currency') }}
                             </strong>
-                            to gateway of your choice. Take note of the tx hash, receipt number, etc
-                            and input it below.
+                            to the gateway of your choice. Take note of the Tx hash, receipt number,
+                            etc. and input it below.
                         </p>
                     </div>
                     <div class="form__group--horizontal">
@@ -159,24 +162,26 @@
                             <input
                                 class="form__text"
                                 type="text"
-                                disabled
+                                readonly
                                 value="{{ $package->cost }}"
+                                x-on:focus="$el.select()"
                                 id="package-cost"
                             />
                             <label for="package-cost" class="form__label form__label--floating">
-                                Cost
+                                Cost ({{ config('donation.currency') }})
                             </label>
                         </p>
                         <p class="form__group">
                             <input
                                 class="form__text"
                                 type="text"
+                                autofocus
                                 value=""
                                 id="proof"
                                 name="transaction"
                             />
                             <label for="proof" class="form__label form__label--floating">
-                                Tx hash, Receipt number, Etc
+                                Tx hash, receipt number, etc.
                             </label>
                         </p>
                     </div>

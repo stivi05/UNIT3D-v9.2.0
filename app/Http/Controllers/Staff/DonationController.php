@@ -39,7 +39,7 @@ class DonationController extends Controller
         }])->latest()->paginate(25);
 
         $dailyDonations = Donation::query()
-            ->selectRaw('DATE(donations.created_at) as date, SUM(donation_packages.cost) as total')
+            ->selectRaw('DATE(donations.updated_at) as date, SUM(donation_packages.cost) as total')
             ->join('donation_packages', 'donations.package_id', '=', 'donation_packages.id')
             ->where('donations.status', '=', ModerationStatus::APPROVED)
             ->groupBy('date')
@@ -47,7 +47,7 @@ class DonationController extends Controller
             ->get();
 
         $monthlyDonations = Donation::query()
-            ->selectRaw('EXTRACT(YEAR FROM donations.created_at) as year, EXTRACT(MONTH FROM donations.created_at) as month, SUM(donation_packages.cost) as total')
+            ->selectRaw('EXTRACT(YEAR FROM donations.updated_at) as year, EXTRACT(MONTH FROM donations.updated_at) as month, SUM(donation_packages.cost) as total')
             ->join('donation_packages', 'donations.package_id', '=', 'donation_packages.id')
             ->where('donations.status', '=', ModerationStatus::APPROVED)
             ->groupBy('year', 'month')
@@ -73,18 +73,30 @@ class DonationController extends Controller
 
         $donation = Donation::query()->with(['user', 'package'])->findOrFail($id);
         $donation->status = ModerationStatus::APPROVED;
+
+        $latestDonation = Donation::query()
+            ->where('status', '=', ModerationStatus::APPROVED)
+            ->where('user_id', '=', $donation->user->id)
+            ->latest('updated_at')
+            ->first();
+
+        $isLifetime = $donation->package->donor_value === null ||
+            ($latestDonation && $latestDonation->ends_at === null);
+
         $donation->starts_at = $now;
 
-        if ($donation->package->donor_value > 0) {
-            $donation->ends_at = $now->addDays($donation->package->donor_value);
-        } else {
-            $donation->ends_at = null;
+        if ($latestDonation && !$isLifetime) {
+            $donation->starts_at = $latestDonation->ends_at;
+        }
+
+        if (!$isLifetime) {
+            $donation->ends_at = $donation->starts_at->copy()->addDays($donation->package->donor_value);
         }
 
         $donation->user->invites += $donation->package->invite_value ?? 0;
         $donation->user->uploaded += $donation->package->upload_value ?? 0;
         $donation->user->is_donor = true;
-        $donation->user->is_lifetime = $donation->package->donor_value === null;
+        $donation->user->is_lifetime = $isLifetime;
         $donation->user->seedbonus += $donation->package->bonus_value ?? 0;
         $donation->user->save();
 
