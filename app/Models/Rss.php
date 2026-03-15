@@ -27,13 +27,34 @@ use AllowDynamicProperties;
 /**
  * App\Models\Rss.
  *
- * @property int                             $id
- * @property int                             $position
- * @property string                          $name
- * @property int                             $user_id
- * @property bool                            $is_private
- * @property int                             $is_torrent
- * @property array                           $json_torrent
+ * @property int    $id
+ * @property int    $position
+ * @property string $name
+ * @property int    $user_id
+ * @property bool   $is_private
+ * @property int    $is_torrent
+ * @property array{
+ *     search: ?string,
+ *     uploader: ?string,
+ *     categories: ?list<string>, // string is the id
+ *     types: ?list<string>, // string can be name or id
+ *     resolutions?: ?list<string>, // string can be name or id
+ *     genres: ?list<string>, // string can be name or id
+ *     tmdb: ?string,
+ *     imdb: ?string,
+ *     tvdb: ?string,
+ *     mal: ?string,
+ *     freeleech: null|'1',
+ *     doubleupload: null|'1',
+ *     featured: null|'1',
+ *     highspeed: null|'1',
+ *     bookmark?: null|'1',
+ *     internal: null|'1',
+ *     personalrelease?: null|'1',
+ *     alive: null|'1',
+ *     dying: null|'1',
+ *     dead: null|'0','1',
+ * } $json_torrent
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
