@@ -168,8 +168,42 @@ Endpoint: GET `/api/user`
 
 Response:
 ```json
-{"username":"UNIT3D","group":"Owner","uploaded":"50 GiB","downloaded":"1 GiB","ratio":"50","buffer":"124 GiB","seeding":0,"leeching":0,"seedbonus":"0.00","hit_and_runs":0}
+{
+  "username": "UNIT3D",
+  "group": "Owner",
+  "uploaded": "50 GiB",
+  "downloaded": "1 GiB",
+  "ratio": "50",
+  "buffer": "124 GiB",
+  "seeding": 0,
+  "leeching": 0,
+  "seedbonus": "0.00",
+  "hit_and_runs": 0,
+  "real_uploaded": 48318382080,
+  "real_downloaded": 1073741824,
+  "credited_uploaded": 53687091200,
+  "credited_downloaded": 1073741824,
+  "average_seedtime": 1339392,
+  "seeding_size": 2748779069440,
+  "fl_tokens": 5,
+  "uploads_count": 12,
+  "downloads_count": 87,
+  "bonus_uploaded": 5153960755
+}
 ```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `real_uploaded` | int | Actual bytes uploaded (without bonus multipliers) |
+| `real_downloaded` | int | Actual bytes downloaded (without freeleech) |
+| `credited_uploaded` | int | Credited bytes uploaded (with bonus multipliers applied) |
+| `credited_downloaded` | int | Credited bytes downloaded (after freeleech applied) |
+| `average_seedtime` | int | Average seed time per torrent in seconds |
+| `seeding_size` | int | Total size in bytes of torrents currently seeding |
+| `fl_tokens` | int | Available freeleech tokens |
+| `uploads_count` | int | Number of torrents uploaded |
+| `downloads_count` | int | Number of torrents downloaded |
+| `bonus_uploaded` | int | Upload credit in bytes purchased with bonus points |
 
 Example:
 ```

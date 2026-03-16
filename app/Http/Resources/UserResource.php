@@ -38,21 +38,46 @@ class UserResource extends JsonResource
      *     leeching: int,
      *     seedbonus: string,
      *     hit_and_runs: int,
+     *     real_uploaded: int,
+     *     real_downloaded: int,
+     *     credited_uploaded: int,
+     *     credited_downloaded: int,
+     *     average_seedtime: int,
+     *     seeding_size: int,
+     *     fl_tokens: int,
+     *     uploads_count: int,
+     *     downloads_count: int,
+     *     bonus_uploaded: int,
      * }
      */
     public function toArray(Request $request): array
     {
+        $historyStats = $this->history_stats;
+        $avgSeedtime = $historyStats?->count > 0
+            ? (int) (($historyStats->seedtime_sum ?? 0) / $historyStats->count)
+            : 0;
+
         return [
-            'username'     => $this->username,
-            'group'        => $this->group->name,
-            'uploaded'     => str_replace("\u{00A0}", ' ', $this->formatted_uploaded),
-            'downloaded'   => str_replace("\u{00A0}", ' ', $this->formatted_downloaded),
-            'ratio'        => $this->formatted_ratio,
-            'buffer'       => str_replace("\u{00A0}", ' ', $this->formatted_buffer),
-            'seeding'      => \count($this->seedingTorrents),
-            'leeching'     => \count($this->leechingTorrents),
-            'seedbonus'    => $this->seedbonus,
-            'hit_and_runs' => $this->hitandruns,
+            'username'            => $this->username,
+            'group'               => $this->group->name,
+            'uploaded'            => str_replace("\u{00A0}", ' ', $this->formatted_uploaded),
+            'downloaded'          => str_replace("\u{00A0}", ' ', $this->formatted_downloaded),
+            'ratio'               => $this->formatted_ratio,
+            'buffer'              => str_replace("\u{00A0}", ' ', $this->formatted_buffer),
+            'seeding'             => $this->seeding_torrents_count,
+            'leeching'            => $this->leeching_torrents_count,
+            'seedbonus'           => $this->seedbonus,
+            'hit_and_runs'        => $this->hitandruns,
+            'real_uploaded'       => (int) ($historyStats?->upload_sum ?? 0),
+            'real_downloaded'     => (int) ($historyStats?->download_sum ?? 0),
+            'credited_uploaded'   => (int) ($historyStats?->credited_upload_sum ?? 0),
+            'credited_downloaded' => (int) ($historyStats?->credited_download_sum ?? 0),
+            'average_seedtime'    => $avgSeedtime,
+            'seeding_size'        => (int) $this->seeding_size,
+            'fl_tokens'           => $this->fl_tokens,
+            'uploads_count'       => $this->torrents_count,
+            'downloads_count'     => (int) ($historyStats?->download_count ?? 0),
+            'bonus_uploaded'      => (int) $this->bonus_uploaded,
         ];
     }
 }
