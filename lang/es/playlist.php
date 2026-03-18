@@ -13,7 +13,7 @@ return [
  */
     'about' => '¡Aquí encontrarás listas de reproducción compiladas por usuarios que contienen títulos de su agrado!',
     'attached-success' => 'El torrent se ha adjuntado correctamente a tu lista de reproducción.',
-    'add-to-playlist' => 'Agregar Torrent a la lista de reproducción',
+    'add-to-playlist' => 'Añadir Torrent a la lista de reproducción',
     'add-torrent' => 'Agregar Torrent',
     'added-by' => 'Por:',
     'cover' => 'Seleccionar una imagen de portada',

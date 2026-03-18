@@ -21,12 +21,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'activation-error' => 'Token o account bannato, non valido oppure già confermato!',
-    'activation-success' => 'Account confermato! Ora puoi accedere! ',
-    'add-image' => 'Aggiungi un altro link immagine',
+    'activation-error' => 'Bannato o token non valido oppure account già confermato!',
+    'activation-success' => 'Account confermato! Ora puoi accedere!',
+    'add-image' => 'Aggiungi un altro link per l\'immagine',
     'add-profile' => 'Aggiungi un altro link al profilo',
-    'allow-invite-appl' => 'Le registrazioni sono chiuse! Devi essere invitato per registrarti! Tuttavia, le iscrizioni dell applicazione sono aperte.',
-    'allow-invite' => 'Le registrazioni sono chiuse! Devi essere invitato per registrarti! Sei stato reindirizzato alla pagina di accesso! ',
+    'allow-invite-appl' => 'Le registrazioni sono chiuse! Devi essere invitato per registrarti! Tuttavia le candidature sono aperte. Stai per essere reindirizzato alla pagina di candidatura!',
+    'allow-invite' => 'Le registrazioni sono chiuse! Devi essere invitato per registrarti! Sei stato reindirizzato alla pagina di accesso!',
     'are-you' => 'Tu sei:',
     'appl-closed' => 'Applications chiuse',
     'appl-intro' => 'è una comunità chiusa. Devi avere un link di invito per registrarti. Se non riesci a ottenere un invito, puoi compilare la seguente applicazione per iscriverti.',
@@ -59,7 +59,7 @@ return [
     'welcome-restore' => 'Bentornato! Il tuo account non è più disabilitato!',
     'password' => 'Password',
     'username' => 'Nome utente',
-    'application' => 'Richiesta',
+    'application' => 'Candidatura',
     'apply' => 'Fare richiesta',
     'code' => 'Codice TOTP',
     'confirm-password' => 'Conferma password',

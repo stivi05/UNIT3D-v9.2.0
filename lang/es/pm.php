@@ -11,7 +11,7 @@ return [
  * @author     HDVinnie <hdinnovations@protonmail.com>
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
-    'all-marked-read' => '¡Todos tus mensajes han sido marcados como leídos!',
+    'all-marked-read' => '¡Tus mensajes han sido marcados como leídos!',
     'create' => 'Crear',
     'delete' => 'Eliminar',
     'delete-success' => '¡El mensaje privado fue eliminado exitosamente!',

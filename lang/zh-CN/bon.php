@@ -18,7 +18,7 @@ return [
     'bonus' => '额外奖赏',
     'date' => '日期',
     'earning' => '收入',
-    'earning-rate' => '按率推算……',
+    'earning-rate' => '以当前做种速度，您的时魔为……',
     'earnings' => '收入',
     'exchange' => '交易',
     'exchange-warning' => '注意，所涉及的魔力交易是不可退回的！请三思！',

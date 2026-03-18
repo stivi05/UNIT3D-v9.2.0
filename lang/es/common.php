@@ -193,7 +193,7 @@ return [
     'sponsor' => 'Hazte Patrocinador',
     'staff' => 'Equipo',
     'staff-tools' => 'Herramientas de administración',
-    'stats' => 'Estad.',
+    'stats' => 'Estadísticas',
     'status' => 'Estado',
     'sticked' => 'Fijado',
     'subject' => 'Asunto',
@@ -241,4 +241,9 @@ return [
     'total' => 'Total',
     'trending' => 'Tendencia',
     'deleted_at' => 'Eliminado el',
+    'awarded' => 'Otorgado',
+    'contest' => 'Concurso',
+    'contests' => 'Concursos',
+    'ends-at' => 'Termina a las',
+    'starts-at' => 'Empieza a las',
 ];

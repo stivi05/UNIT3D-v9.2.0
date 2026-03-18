@@ -16,7 +16,7 @@ return [
     'banned-footer' => '- Non sono state rispettate le regole',
     'banned-header' => 'Sei stato bannato',
     'bug-description' => 'Problema',
-    'bug-footer' => 'Risolvi quella schifezza',
+    'bug-footer' => 'Risolvi quella schifezza!',
     'bug-header' => 'Nuovo bug report da',
     'bug-priority' => 'Priorità',
     'bug-title' => 'Titolo del bug',

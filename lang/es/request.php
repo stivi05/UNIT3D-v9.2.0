@@ -15,7 +15,7 @@ return [
     'access-delete-error' => 'No tienes acceso para eliminar esta solicitud.',
     'add-request' => 'Añadir solicitud',
     'added-bonus' => 'Tu bonificación ha sido añadida exitosamente.',
-    'added-request' => 'Solicitud Agregada.',
+    'added-request' => 'Solicitud agregada.',
     'age' => 'Antigüedad',
     'all-requests' => 'Todas las solicitudes',
     'already-approved' => 'Parece que esta solicitud ya fue aprobada',
