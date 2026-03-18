@@ -36,7 +36,7 @@ return [
     'request-pending-aproval' => 'Solicitud pendiente de aprobación',
     'select-category' => 'Por favor selecciona una categoría a continuación',
     'site-stats' => 'Estadísticas del sitio',
-    'stats' => 'Estad.',
+    'stats' => 'Estadísticas',
     'stats-format' => 'Todas las estadísticas se muestran en formato Top 100',
     'top-bankers' => 'Los que más BON tienen',
     'top-bountied' => 'Top Recompensas',

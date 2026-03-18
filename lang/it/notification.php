@@ -12,7 +12,7 @@ return [
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
     'date' => 'Data',
-    'delete' => 'Elimina',
+    'delete' => 'Cancella',
     'delete-all' => 'Elimina tutte le notifiche',
     'mark-all-read' => 'Segna tutti come letti',
     'mark-read' => 'segna come letto',
@@ -24,7 +24,7 @@ return [
     'already-marked-read' => 'Notifica già contrassegnata come letta!',
     'all-deleted' => 'Tutte le notifiche eliminate!',
     'all-marked-read' => 'Tutte le notifiche contrassegnate come lette!',
-    'bon-gifts' => 'Buoni regalo',
+    'bon-gifts' => 'Bon regalo',
     'comment-tags' => 'Tag di commento',
     'deleted' => 'Notifica eliminata!',
     'filter-by-type' => 'Filtra per tipo di notifica',
@@ -38,6 +38,6 @@ return [
     'request-fills' => 'Richiesta esaudita',
     'request-rejections' => 'Richiesta scartata',
     'request-unclaims' => 'Richiesta non reclamata',
-    'reseed-requests' => 'Richieste RESEED',
+    'reseed-requests' => 'Richieste di reseed',
     'unfollows' => 'Smetti di seguire',
 ];

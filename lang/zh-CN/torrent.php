@@ -240,4 +240,5 @@ return [
     'postponed' => '推迟',
     'season' => '季',
     'comments-left' => '留下评论',
+    'first-to-comment' => '首评',
 ];

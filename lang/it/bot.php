@@ -16,7 +16,7 @@ return [
     'bots' => 'Motori di ricerca',
     'color' => 'Colore',
     'command' => 'Comando',
-    'edit-bot' => 'Modifica Bot',
+    'edit-bot' => 'Modifica bot',
     'emoji-code' => 'Codice Emoji',
     'help' => 'Aiuto',
     'icon' => 'icona',

@@ -75,4 +75,5 @@ return [
     'bon-earnings' => '收入',
     'mass-email' => '群发邮件',
     'passkeys' => '密钥',
+    'ticket-categories' => '表单类型',
 ];
