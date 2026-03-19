@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://unit3d.kr'),
 
     'asset_url' => env('ASSET_URL', null),
 

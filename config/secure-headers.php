@@ -122,13 +122,13 @@ return [
      */
 
     'hsts' => [
-        'enable' => env('HSTS_ENABLED', true),
+        'enable' => env('HSTS_ENABLED', false),
 
         'max-age' => 31536000,
 
-        'include-sub-domains' => true,
+        'include-sub-domains' => false,
 
-        'preload' => true,
+        'preload' => false,
     ],
 
     /*
@@ -451,7 +451,7 @@ return [
      */
 
     'csp' => [
-        'enable' => env('CSP_ENABLED', true),
+        'enable' => env('CSP_ENABLED', false),
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
         'report-only' => env('CSP_REPORT_ONLY', false),
@@ -487,8 +487,8 @@ return [
             'self' => true,
 
             'allow' => [
-                'https://'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST).(parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)).'/socket.io/',
-                'wss://'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST).(parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)).'/socket.io/',
+                'http://'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST).(parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)).'/socket.io/',
+                'ws://'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST).(parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)).'/socket.io/',
                 'https://api.themoviedb.org/',
             ],
         ],
