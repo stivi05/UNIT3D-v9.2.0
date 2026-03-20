@@ -192,5 +192,28 @@
         @yield('javascripts')
         @yield('scripts')
         @livewireScriptConfig(['nonce' => HDVinnie\SecureHeaders\SecureHeaders::nonce()])
+       
+       <button onclick="scrollToTop()" id="backToTop" title="Go to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+
+        <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+            const mybutton = document.getElementById("backToTop");
+
+            window.onscroll = function() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    mybutton.style.display = "flex";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            };
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        </script>
     </body>
 </html>

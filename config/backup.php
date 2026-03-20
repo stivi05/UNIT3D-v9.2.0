@@ -229,11 +229,11 @@ return [
         'notifiable' => Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => env('DEFAULT_OWNER_EMAIL'),
+            'to' => env('DEFAULT_OWNER_EMAIL', 'admin@unit3d.kr'),
 
             'from' => [
-                'address' => env('MAIL_FROM_ADDRESS'),
-                'name'    => env('MAIL_FROM_NAME'),
+                'address' => env('MAIL_FROM_ADDRESS', 'admin@unit3d.kr'),
+                'name'    => env('MAIL_FROM_NAME', env('APP_NAME', 'UNIT3D')),
             ],
         ],
 

@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'title' => 'UNIT3D',
+    'title' => 'UNIT3D Test Site',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     |
     */
 
-    'subTitle' => 'Built On Laravel',
+    'subTitle' => 'Awesome source',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     |
     */
 
-    'meta_description' => 'Built On Laravel',
+    'meta_description' => 'Awesome source',
 
     /*
     |--------------------------------------------------------------------------

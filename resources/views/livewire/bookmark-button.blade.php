@@ -1,3 +1,4 @@
+<div> {{-- 1. Добавяш това в началото --}}
 @if ($this->isBookmarked)
     <button
         wire:click="destroy({{ $torrent->id }})"
@@ -17,3 +18,4 @@
         {{ __('torrent.bookmark') }} ({{ $bookmarksCount }})
     </button>
 @endif
+</div> {{-- 2. Добавяш това в края --}}

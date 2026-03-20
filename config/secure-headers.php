@@ -181,14 +181,17 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/autoplay
         'autoplay' => [
-            'none' => false,
+        'none' => false,
+ 
+        '*' => false,
 
-            '*' => false,
+         'self' => true,
 
-            'self' => true,
-
-            'origins' => [],
-        ],
+         'origins' => [
+        'https://www.youtube.com',
+        'https://www.youtube-nocookie.com',
+       ],
+    ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/battery
         'battery' => [
@@ -247,14 +250,17 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/encrypted-media
         'encrypted-media' => [
-            'none' => false,
+        'none' => false,
 
-            '*' => false,
+         '*' => false,
 
-            'self' => true,
+         'self' => true,
 
-            'origins' => [],
-        ],
+         'origins' => [
+        'https://www.youtube.com',
+        'https://www.youtube-nocookie.com',
+      ],
+   ],
 
         // https://wicg.github.io/page-lifecycle/#execution-while-not-rendered
         'execution-while-not-rendered' => [
@@ -465,10 +471,10 @@ return [
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/block-all-mixed-content
-        'block-all-mixed-content' => true,
+        'block-all-mixed-content' => false,
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests
-        'upgrade-insecure-requests' => true,
+        'upgrade-insecure-requests' => false,
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri
         'base-uri' => [
@@ -486,9 +492,9 @@ return [
         'connect-src' => [
             'self' => true,
 
-            'allow' => [
-                'http://'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST).(parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)).'/socket.io/',
-                'ws://'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST).(parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':'.parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)).'/socket.io/',
+           'allow' => [
+                env('VITE_ECHO_ADDRESS') ? 'http://' . parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST) . (parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':' . parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)) . '/socket.io/' : '',
+                env('VITE_ECHO_ADDRESS') ? 'ws://' . parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_HOST) . (parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT) === null ? '' : ':' . parse_url(env('VITE_ECHO_ADDRESS'), PHP_URL_PORT)) . '/socket.io/' : '',
                 'https://api.themoviedb.org/',
             ],
         ],
@@ -518,11 +524,20 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors
         'frame-ancestors' => [
-            'self' => true,
-        ],
+         'self' => true,
+         'allow' => [
+        'https://www.youtube.com',
+        'https://www.youtube-nocookie.com',
+      ],
+   ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-src
         'frame-src' => [
+         'self' => true,
+            'allow' => [
+                'https://www.youtube.com',
+                'https://www.youtube-nocookie.com',
+          ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src

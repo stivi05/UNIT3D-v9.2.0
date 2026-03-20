@@ -167,6 +167,8 @@
                             >
                                 Material design 3 amoled
                             </option>
+
+                            <option value="16" @selected($user->settings->style === 16)>Cyber Neon</option>
                         </select>
                         <label class="form__label form__label--floating" for="style">Theme</label>
                     </p>
